@@ -19,7 +19,8 @@
 	 		
 	 		restrict: "A",
 
-            templateUrl: "tableTemplate.html"
+            templateUrl: "tableTemplate.html",
+            replace: true
 
 	 	}            
 	 }).controller("defaultCtrl", function ($scope) {                
@@ -37,7 +38,7 @@
 			<h3>Products</h3>        
 		</div>        
 		<div class="panel-body">            
-			<div unordered-list="products" class="table table-striped">
+			<div unordered-list="products" class="table table-condensed">
 			</div>        
 		</div>    
 	</div> 
