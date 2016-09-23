@@ -9,27 +9,29 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="directives.js"></script>
+    <script src="factory-services.js"></script>
 
     <script>
     
-        angular.module("exampleApp", ["customDirectives"])
-        .controller("defaultCtrl", function ($scope) {
+        angular.module("exampleApp", ["customDirectives","customServices"])
+        .controller("defaultCtrl", function ($scope,logService) {
             $scope.data = {
                 cities: ["London", "New York", "Paris"],
                 totalClicks: 0
             };
             $scope.$watch('data.totalClicks', function (newVal) {
-                console.log("newVal " + newVal);
-                console.log("totalClicks " + $scope.totalClicks);
-
+                //console.log("newVal " + newVal);
+                logService.log(newVal);
+                logService.play(newVal);
             });
+            $scope.infoctrl = "abc";
         });
     </script>
 
 </head>
 <body ng-controller="defaultCtrl">
     <div class="well">
-        <div class="btn-group" tri-button counter="data.totalClicks" source="data.cities">
+        <div class="btn-group" tri-button counternew="data.totalClicks" infonew="infoctrl">
             <button class="btn btn-default"
                     ng-repeat="city in data.cities">
                 {{city}}
