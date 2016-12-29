@@ -5,20 +5,20 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
-
-
-
 <body ng-controller='MainCtrl as ctrl'>   
-    <div ng-repeat="(author,note) in ctrl.notes">
-    	<span class="label">{{note.label}}</span>
-    	<span ng-bind="author"></span>
-    </div>
-    <script type="text/javascript">
-  angular.module('notesApp',[])
-     .controller('MainCtrl',function () {
 
-     	var self = this;
-     	self.notes = {
+    <div ng-repeat="(author,note) in ctrl.notes">
+        <span ng-bind="author"></span> <!-- better way to do -->
+        {{author}}
+    	<span class="label">{{note.label}} {{note.id}}</span>
+    </div>
+
+    <script type="text/javascript">
+     
+    angular.module('notesApp',[])
+    .controller('MainCtrl',function () {
+
+     	this.notes = {
      		shayam:{
      			id: 1,
      			label: 'First Note',
@@ -34,9 +34,7 @@
      			label: 'Third Note',
      			done: false
      		},
-
      	};
-     	
      });
 </script>
 </body>

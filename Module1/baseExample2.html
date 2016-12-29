@@ -18,6 +18,8 @@ user:"Mindtree",
 
 items: [{action:"Buy Flowers", done:false},
         {action:"Get Shoes", done:true},
+        {action:"Go Partying", done:false},
+        {action:"Go Partying", done:false},
         {action:"Go Partying", done:false}]
 };
 
@@ -33,9 +35,10 @@ var employee = {
 //module - app_name, dependencies
 var mytodoApp = angular.module("todoApp",[]);
 
-mytodoApp.controller("ToDoCtrl",function($scope){
-    $scope.todo = model;
-    $scope.me = employee;
+mytodoApp.controller("ToDoCtrl",function(){
+    this.todo = model;
+    this.me = employee;
+    this.you = "right";
 });
 
 </script>
@@ -43,12 +46,13 @@ mytodoApp.controller("ToDoCtrl",function($scope){
 
 </head> 
 
-<body ng-controller="ToDoCtrl">
-
+<!-- Entire body is now controlled by this controller -->
+<body ng-controller="ToDoCtrl as tdc">
+<div class="container">
 	<div class="page-header">        
 		<h1>
-			{{todo.user}}'s To Do List By {{me.name}}, {{me.location}}
-            <span class="label label-default">{{todo.items.length}}</span>
+			{{tdc.todo.user}}'s To Do List By {{tdc.me.name}}, {{tdc.me.location}}
+            <span class="label label-default">{{tdc.todo.items.length}}</span>
 		</h1>    
 	</div>    
 	<div class="panel">        
@@ -58,7 +62,7 @@ mytodoApp.controller("ToDoCtrl",function($scope){
 			<button class="btn btn-default">Add</button>            
 		</span>        
 	</div>
-	<table class="table table-striped">            
+	<table class="table table-striped table-bordered table-hover">            
 		<thead>                
 			<tr>                    
 				<th>Description</th>                    
@@ -66,17 +70,18 @@ mytodoApp.controller("ToDoCtrl",function($scope){
 			</tr>            
 		</thead>            
 		<tbody>                
-			<tr ng-repeat="item in todo.items">  
+			<tr ng-repeat="item in tdc.todo.items">  
 			    <td>{{item.action}}</td>
 			    <td>{{item.done}}</td>
 			</tr>
-			<tr ng-repeat="it in me.items">  
-				    <td>{{it.action}}</td>
-				    <td>{{it.done}}</td>
+			<tr ng-repeat="it in tdc.me.items">  
+				<td>{{it.action}}</td>
+				<td>{{it.done}}</td>
 			</tr>       
 		</tbody>        
 		</table> 
 
 	</div> 
+</div>
 </body> 
 </html>

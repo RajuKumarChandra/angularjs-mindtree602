@@ -18,14 +18,14 @@
 </form>
 
 <script type="text/javascript">
+//Creating Module
 angular.module('notesApp',[])
+//Creating controller
 .controller('MainCtrl',function(){
     var self = this;
-
     self.onSubmitForm = function(){
     	self.user.username = "Hello " + self.user.username;
     	self.user.password = "Pass " + self.user.password;
-
     }
     
 });
