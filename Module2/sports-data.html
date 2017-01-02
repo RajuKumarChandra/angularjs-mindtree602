@@ -9,8 +9,8 @@
 <body ng-controller='MainCtrl as ctrl'>
 
  <div ng-repeat="sport in ctrl.sports">
-   	<label ng-bind="sport.label"></label>
-
+   	<strong><label ng-bind="sport.label"></label></strong>
+    
     <div>
     	Using ng-checked
     	<input type="checkbox" ng-checked="sport.selected == 'YES' ">
@@ -24,7 +24,7 @@ angular.module('notesApp',[])
     
     var self = this;
     self.sports = [
-    {label:'Basketball', selected:'YES'},
+    {label:'Basketball', selected:'NO'},
     {label:'Football', selected:'NO'},
     {label:'Cricket', selected:'YES'}
     ];

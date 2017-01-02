@@ -6,7 +6,7 @@
 
 <body ng-controller="MainCtrl as ctrl">
 	<form novalidate name="myform">
-       <input type="text" name="uname" ng-model="ctrl.user.username" ng-minlength="4">
+       <input type="text" name="uname" ng-model="ctrl.user.username" ng-minlength="4" required placeholder="some name">
        
        <ng-form name="profile">
            <input type="text" ng-model="ctrl.user.profile.firstname" placeholder="FirstName" required>
@@ -17,11 +17,11 @@
        </ng-form>
 
        <span ng-show="myform.profile.$invalid">
-       	Fill info
+       	First Form invalid
        </span>
 
        <span ng-show="myform.myprofile.$invalid">
-       	My Fill info
+       	Second form invalid
        </span>
 
        <input type="submit" value="submit" ng-disabled="myform.$invalid">
@@ -30,9 +30,13 @@
 <script type="text/javascript">
 
  angular.module("notesApp",[])
+ 
  .controller("MainCtrl", function(){
-     
+     this.user ={
+      username:"Awantik",
+     }
  });
+
 </script>
 </body>
 </html>
