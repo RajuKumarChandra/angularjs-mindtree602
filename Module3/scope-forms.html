@@ -10,45 +10,44 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </head>
 
-<body ng-controller="ourctrl">
+<body ng-controller="ourctrl as o">
 	
-	<h1>{{billinfo}}</h1>
+<h1>{{o.billinfo}}</h1>
 
 <div class="well">
 	<h3>Billing Zip Code Information</h3>
 	<div class="form-group">
-        <input class="form-control" ng-model="billinfo">
+        <input class="form-control" ng-model="o.billinfo">
 	</div>
-    <button class="btn btn-info" ng-click="setAddress('billingzip')">Save Billing</button>
+    <button class="btn btn-info" ng-click="o.setAddress()">Save Billing</button>
 </div>
 
-    <h2>{{shipbillinfo}}</h2>
+    <h2>{{o.shipbillinfo}}</h2>
 
 <div class="well">
 	<h3>Shipping Zip Code Information</h3>
 	<div class="form-group">
-        <input class="form-control" ng-model="shipbillinfo">
+        <input class="form-control" ng-model="o.shipbillinfo">
 	</div>
-	<button class="btn btn-info" ng-click="copyAddress()">Copy Billing</button>
-    <button class="btn btn-info" ng-click="setAddress('shipbillingzip')">Save Billing</button>
+	<button class="btn btn-info" ng-click="o.copyAddress()">Copy Billing</button>
+    <button class="btn btn-info" ng-click="o.setAddress()">Save Billing</button>
 </div>
 
 <script type="text/javascript">
+
 angular.module("exampleApp",[])
-.controller("ourctrl",function($scope){
-     $scope.address = {};
 
-     $scope.setAddress = function(type){
-        console.log("Logging " + type + $scope.billinfo);
-        $scope.address[type] = $scope.billinfo;
+.controller("ourctrl",function(){
+     this.address = {};
+
+     this.setAddress = function(){
+        console.log("Logging " + this.billinfo);
      }
 
-     $scope.copyAddress = function(){
-     	console.log("Ship Logging "+ $scope.billinfo);
-     	$scope.shipbillinfo = $scope.billinfo;
+     this.copyAddress = function(){
+     	console.log("Ship Logging "+ this.billinfo);
+     	this.shipbillinfo = this.billinfo;
      }
-
-
 });
 </script>
 

@@ -11,18 +11,21 @@
 <script src="multiple-controllers.js"></script>
 </head>
 
-<body ng-controller="topLevelCtrl">
-    
-<div class="well" ng-controller="firstChildCtrl">
+<body ng-controller="topLevelCtrl as tlc">
+    <!--https://github.com/zekelabs/angularjs-->
+<div class="well" ng-controller="firstChildCtrl as fcc">
 	<h3>First Child Information</h3>
 	<div class="input-group">
         <span class="input-group-btn">
-            <button class="btn btn-info" ng-click="reverseText()">Reverse Text</button>
-            <button class="btn btn-info" ng-click="changeCase()">Case Change</button>
+            <button class="btn btn-info" ng-click="fcc.reverseText()">Reverse Text</button>
+            <button class="btn btn-info" ng-click="tlc.changeCase()">Case Change</button>
+            <div ng-controller="secondChildCtrl as scc">
+               <button class="btn btn-info" ng-click="scc.shiftText()">Shift Text</button>
+            </div>
         </span>
 	</div>
-    
-</div>
 
+	
+</div>
 </body>
 </html>

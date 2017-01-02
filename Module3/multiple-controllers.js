@@ -1,26 +1,26 @@
 var app = angular.module("exampleApp",[]);
 
-app.controller("topLevelCtrl",function($scope){
+app.controller("topLevelCtrl",function(){
 
-    $scope.reverseText = function(){
+    this.reverseText = function(){
        console.log("In base reverse text");
     }
 
-    $scope.changeCase = function(){
+    this.changeCase = function(){
        console.log("In base change case");
     }
 });
 
-app.controller("firstChildCtrl",function($scope){
+app.controller("firstChildCtrl",function(){
 
-    $scope.reverseText = function(){
+    this.reverseText = function(){
        console.log("In first child reverse text");
     }
 });
 
-app.controller("secondChildCtrl",function($scope){
+app.controller("secondChildCtrl",function(){
 
-    $scope.shiftText = function(){
+    this.shiftText = function(){
        console.log("In second child Shift text");
     }
 });
