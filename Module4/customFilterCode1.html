@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
 </head>
 
 <body ng-controller="ourctrl">
@@ -18,10 +19,7 @@
 				<span class="label label-primary">{{products.length}}</span>
 			</h3>
 
-      <div class="panel-body">Limit: <select ng-model="cat" ng-options="item for item in limitRange"></select>
-      
-      <input class="form-control" ng-model="cat">
-
+      <div class="panel-body">Limit: <select ng-model="col" ng-options="item for item in limitRange"></select>
 			<div class="panel-body">
 				<table class="table table-stripped table-bordered table-condenced">
 					<thead>
@@ -34,9 +32,9 @@
                        </tr> 
 					</thead>
 					<tbody>
-                       <tr ng-repeat="p in products | filter:{category:cat}">
+                       <tr ng-repeat="p in products | orderBy:col">
                        	<td>{{ p | json}}</td>
-                       	<td>{{ p.name | uppercase }}</td>
+                       	<td>{{ p.name | labelCase: NaN }}</td>
                        	<td>{{ p.category }}</td>
                        	<td>{{ getExpiryDate(p.expiry) | date:"dd MMM yyyy" }}</td>
                        	<td class="text-right">{{ p.price | currency:"&#8377" }}</td>
@@ -48,9 +46,9 @@
 angular.module("exampleApp",[])
 .controller("ourctrl",function($scope){
    $scope.products = [
-     {name:'Apple', category:'Fruit',price:1000, expiry:10},
-     {name:'PineApple', category:'Fruit',price:1500, expiry:14},
-     {name:'CusterdApple', category:'Fruit',price:3000, expiry:5},
+     {name:'apple', category:'Fruit',price:1000, expiry:10},
+     {name:'pineApple', category:'Fruit',price:1500, expiry:14},
+     {name:'xusterdApple', category:'Fruit',price:3000, expiry:5},
      {name:'Tomato', category:'Vegetable',price:2000, expiry:2},
      {name:'Mango', category:'Fruit',price:10000, expiry:25},
      {name:'Pumpkin', category:'Vegetable',price:6000, expiry:18}
@@ -62,12 +60,38 @@ angular.module("exampleApp",[])
    }
 
    $scope.limitVal = 5;
-   $scope.limitRange = ["Fruit","Vegetable"];
+   $scope.limitRange = ["name","price","-price","expiry"];
 
    // for(var i = 0; i < $scope.products.length; i++){
    //     $scope.limitRange.push(i);
    // }
+
+   $scope.selectItems = function(item){
+    console.log("Each Element " + item.name);
+    return item.category == 'Fruit' && item.price > 2000;
+   }
+
+   $scope.myCustomSorter = function(item){
+     return item.expiry < 5 ? 0 : item.price;
+   }
 })
+.filter("labelCase", function(){
+    return function(value,reverse){
+      if (angular.isString(value)){
+        var intermediate = reverse ? value.toUpperCase() : value.toLowerCase();
+        console.log(intermediate);
+        return (reverse ? intermediate[0].toLowerCase(): intermediate[0].toUpperCase()) + intermediate.substr(1);
+      } else {
+        return value;
+      }
+    };
+  })
+.filter("justAppend", function(){
+    return function(value,reverse){
+      return value+reverse;
+    };
+  });
 </script>
+
 </body>
 </html>
