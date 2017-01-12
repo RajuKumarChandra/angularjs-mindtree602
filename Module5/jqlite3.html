@@ -14,8 +14,11 @@
 //children, eq, find(tag), next, parent
 
 angular.module("exampleApp",[])
+
  .directive("demoDirective", function () {
+
    return function(scope,element,attribute){
+
      var listElem = angular.element("<ol>");
      element.append(listElem);
 
@@ -35,7 +38,11 @@ angular.module("exampleApp",[])
 <body ng-controller="defaultCtrl">
 <h1>JQLite Code Examples</h1>
 <h3>Fruit</h3>
+  <div demo-directive></div> 
+
+  <hr>
   <div demo-directive></div>
-    
+  </hr>
+  
 </body>
 </html>

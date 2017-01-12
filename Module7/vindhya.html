@@ -1,0 +1,76 @@
+<html ng-app = "mainApp">
+   <head>
+      <title>Angular JS Forms</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="controller.js"></script>
+<style src="style.css"></style>      
+
+</head>
+<body class="container" ng-controller="studentController">
+      
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+  style="width: {{width}}%;">
+  {{firstname.length}}
+    <span class="sr-only">60% Complete</span>
+  </div>
+
+</div>
+<form name = "studentForm" novalidate>
+            <table border = "0">
+               <tr>
+                  <td>Enter first name:</td>
+                  <td><input name = "firstname" type = "text" ng-model = "firstName" required>
+                     <span style = "color:red" ng-show = "studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                        <span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
+                     </span>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td>Enter last name: </td>
+                  <td><input name = "lastname"  type = "text" ng-model = "lastName" required>
+                     <span style = "color:red" ng-show = "studentForm.lastname.$dirty && studentForm.lastname.$invalid">
+                        <span ng-show = "studentForm.lastname.$error.required">Last Name is required.</span>
+                     </span>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td>Email: </td><td><input name = "email" type = "email" ng-model = "email" length = "100" required>
+                     <span style = "color:red" ng-show = "studentForm.email.$dirty && studentForm.email.$invalid">
+                        <span ng-show = "studentForm.email.$error.required">Email is required.</span>
+                        <span ng-show = "studentForm.email.$error.email">Invalid email address.</span>
+                     </span>
+                  </td>
+               </tr>
+               
+               <tr>
+                  <td>
+                  <div>
+  
+ <!-- <button type="button" class="btn btn-default">Default</button> -->
+                     <button  type = "button" class="btn btn-primary" ng-click = "reset()">Reset</button>
+                  </td>
+                  <td>
+                     <button ng-disabled = "studentForm.firstname.$dirty &&
+                        studentForm.firstname.$invalid || studentForm.lastname.$dirty &&
+                        studentForm.lastname.$invalid || studentForm.email.$dirty &&
+                        studentForm.email.$invalid" ng-click="submit()">Submit</button>
+                        
+                  </td>
+               </tr>
+               
+            </table>
+         </form>
+
+</div>
+
+</body>
+</html>

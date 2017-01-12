@@ -1,3 +1,9 @@
 Using factory method
 Using service method
 Using provider method
+
+What is a service ?
+1. Method to keep data across the lifetime of angular app
+2. Method to communicate data across the controllers in a consistent way
+3. Singleton object & it gets instantiated only once per application
+4. Organize & share data & functions across the application

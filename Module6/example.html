@@ -12,8 +12,11 @@
 	 angular.module("exampleApp", [])            
 	 
 	 .directive("unorderedList", function () {                
-	 	return function (scope, element, attrs) {                    
-	 		
+	 	return function (scope, element, attrs) {                 
+
+            console.log(attrs["unorderedList"]);
+            console.log(scope[attrs["unorderedList"]]);
+ 	 		
 	 		var data = scope[attrs["unorderedList"]];
 
 	 		var propertyExpression = attrs["listProperty"];                    
@@ -25,7 +28,8 @@
 	 			                        
 	 			for (var i = 0; i < data.length; i++) {                            
 	 				var itemElement = angular.element("<li>")                                
-	 				.text(scope.$eval(propertyExpression, data[i]));                            listElem.append(itemElement);                        
+	 				.text(scope.$eval(propertyExpression, data[i]));                            
+	 				 listElem.append(itemElement);                        
 	 			}                    
 	 		}                
 	 	}            

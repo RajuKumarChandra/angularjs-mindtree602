@@ -14,11 +14,14 @@
     <script>
     
         angular.module("exampleApp", ["customDirectives","customServices"])
+
         .controller("defaultCtrl", function ($scope,logService) {
             $scope.data = {
                 cities: ["London", "New York", "Paris"],
                 totalClicks: 0
             };
+            
+            //whenever there is a change in data.totalClicks, the function will be executed
             $scope.$watch('data.totalClicks', function (newVal) {
                 //console.log("newVal " + newVal);
                 logService.log(newVal);

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<head>
+	<title></title>
+</head>
+<body>
+<div ng-app="myapp" ng-controller ="myctl">
+
+<button ng-click ="vin()">Click me </button>
+
+
+</div>
+
+<script>
+	var app=angular.module('myapp',[]);
+	app.controller('myctl',function($scope)
+
+	{
+		$scope.x= "vindhya";
+
+		$scope.vin = function(){
+			document.write("<h2>Hello World</h2>")
+		}
+
+	}
+);
+</script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 angular.module("exampleApp", [])
-.constant("baseUrl","http://localhost:5500/products/")
+.constant("baseUrl","http://gturnquist-quoters.cfapps.io/api")
 .controller("defaultCtrl",function ($scope,$http,baseUrl) {
 
     $scope.displayMode = "list";
@@ -9,13 +9,9 @@ angular.module("exampleApp", [])
 	$scope.listProducts = function() {
 		$http.get(baseUrl).success(function(data){
 			$scope.products = data;
+			console.log(data[1].type);
 		});
 		
-		// $scope.products = [
-	 //    {id:0, name:"Apple", category:"Fruit", price:200},
-	 //    {id:1, name:"Mango", category:"Fruit", price:300},
-	 //    {id:2, name:"PineApple", category:"Fruit", price:100}
-	 //   ];
     }
 
 	$scope.createProduct = function(product){

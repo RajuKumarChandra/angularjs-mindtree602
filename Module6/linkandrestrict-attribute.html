@@ -26,7 +26,8 @@
 	 			                        
 	 			for (var i = 0; i < data.length; i++) {                            
 	 				var itemElement = angular.element("<li>")                                
-	 				.text(scope.$eval(propertyExpression, data[i]));                            listElem.append(itemElement);                        
+	 				.text(scope.$eval(propertyExpression, data[i]));                            
+	 				listElem.append(itemElement);                        
 	 			}                    
 	 		}                
 	 	},
@@ -46,7 +47,9 @@
 		<div class="panel-heading">            
 			<h3>Products</h3>        
 		</div>        
-		<div class="panel-body">            
+		<div class="panel-body">          
+			<div unordered-list="products" list-property="price | currency">
+			</div>        
 			<div unordered-list="products" list-property="price | currency">
 			</div>        
 		</div>    

@@ -10,8 +10,9 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="item in products">
-				<td>{{item.name}}</td>
-				<td>{{item.category}}</td>
+			{{products}}
+				<td>{{item.type}}</td>
+				<td>{{item.value}}</td>
 				<td class="text-right">{{item.price | currency}}</td>
 				<td class="text-center">
 			    <button class ="btn btn-xs btn-primary" ng-click="">

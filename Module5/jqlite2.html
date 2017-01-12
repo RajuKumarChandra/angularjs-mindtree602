@@ -14,6 +14,7 @@
 //children, eq, find(tag), next, parent
 
 angular.module("exampleApp",[])
+
  .directive("demoDirective", function () {
    return function(scope,element,attribute){
      var items = element.children();
@@ -23,6 +24,7 @@ angular.module("exampleApp",[])
            items.eq(i).css("font-weight","bold");
      }
  }})
+
 .controller("defaultCtrl",function($scope){
     
  });
@@ -42,5 +44,9 @@ angular.module("exampleApp",[])
        </ul>
     <li>Green-Apple</li>
     <li>Andaman-Oranges</li>
+  </ol>
+  <div demo-directive>
+  <p>This is good</p>
+  </div>
 </body>
 </html>

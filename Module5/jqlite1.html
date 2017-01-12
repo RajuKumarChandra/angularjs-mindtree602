@@ -14,18 +14,27 @@
 //children, eq, find(tag), next, parent
 
 angular.module("exampleApp",[])
+
  .directive("demoDirective", function () {
    return function(scope,element,attribute){
+    console.log(element);
+    console.log(attribute);
+    console.log(scope);
+
      var items = element.children();
+
      for(var i= 0; i < items.length; i++){
+
       if(items.eq(i).text() == "Oranges"){
        // items.eq(i).text("Too Yummy Oranges");
         items.eq(i).text("Too Yummy Oranges").css("font-weight","bold");
         console.log(items.eq(i).text())
       }
+
      }
  }})
-.controller("defaultCtrl",function($scope){
+
+ .controller("defaultCtrl",function($scope){
     
  });
 
@@ -41,5 +50,6 @@ angular.module("exampleApp",[])
     <li>Oranges</li>
     <li>Green-Apple</li>
     <li>Andaman-Oranges</li>
+    <li>Oranges</li>
 </body>
 </html>
